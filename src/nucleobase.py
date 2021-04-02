@@ -1,7 +1,13 @@
-class NucleoBase:
+class NB(type):
+
+    def __repr__(self):
+        return self.char
+
+
+class NucleoBase(metaclass=NB):
 
     @property
-    def symbol():
+    def char():
         raise NotImplementedError
 
     @staticmethod

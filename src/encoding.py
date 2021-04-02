@@ -26,14 +26,14 @@ class Encoding():
         return lookup
 
     def get_complement(self, base: NucleoBase) -> NucleoBase:
-        return self.complement_lookup[base]
+        return self.complement_lookup.get(base)
 
-    def validate(self, string):
-        for base_char in string:
-            assert NucleoBase.by_char(base_char) in self.complement_lookup, f"""
-                Invalid character '{base_char}' for {self.name} encoding.
+    def validate(self, sequence):
+        for base in sequence:
+            assert base in self.complement_lookup, f"""
+                Invalid base '{base}' for {self.name} encoding.
                 Expected one of the following:
-                {[base.char for base in self.complement_lookup.keys()]}
+                {self.complement_lookup.keys()}
             """
 
 
