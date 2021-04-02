@@ -7,7 +7,7 @@ from src.nucleobase import (
     Uracil
 )
 
-class Encoding():
+class Encoding:
 
     def __init__(self, name, pairings: [[NucleoBase]]):
         self.name = name

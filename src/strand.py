@@ -24,3 +24,11 @@ class DNAStrand(Strand):
 
 class RNAStrand(Strand):
     encoding = RNA
+
+
+class mRNAStrand(RNAStrand):
+    pass
+
+
+class tRNAStrand(RNAStrand):
+    pass
