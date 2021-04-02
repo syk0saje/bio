@@ -1,2 +1,3 @@
-# bio
-encoding my growing understanding of biological processes
+# Bio
+
+Encoding my growing understanding of biological processes.
