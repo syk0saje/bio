@@ -1,6 +1,6 @@
-from src.strand import mRNAStrand, tRNAStrand
+from src.strand import mRNAStrand, tRNA
 
-STOP_CODONS = []
+STOP_CODONS = ["UAA", "UAG", "UGA"]
 
 
 class Ribosome:
@@ -16,7 +16,7 @@ class Ribosome:
         assert not self.mRNA
         self.mRNA = mRNA
 
-    def bind_tRNA(self, tRNA: tRNAStrand):
+    def bind_tRNA(self, tRNA: tRNA):
         """
         A Site compatibility check
         """
@@ -24,7 +24,7 @@ class Ribosome:
         if self.match(self.current_codon, anticodon):
             self.synthesize(tRNA)
 
-    def synthesize(self, tRNA: tRNAStrand):
+    def synthesize(self, tRNA: tRNA):
         """
         P Site processing and E site ejection
         """

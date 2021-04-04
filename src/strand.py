@@ -3,6 +3,9 @@ from src.encoding import Encoding, DNA, RNA
 
 
 class Strand:
+    """
+    A strand of nucleic acid
+    """
 
     @property
     def encoding() -> Encoding:
@@ -27,8 +30,4 @@ class RNAStrand(Strand):
 
 
 class mRNAStrand(RNAStrand):
-    pass
-
-
-class tRNAStrand(RNAStrand):
     pass

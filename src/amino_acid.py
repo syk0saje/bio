@@ -1,0 +1,2 @@
+class AminoAcid:
+    pass
