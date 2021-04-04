@@ -38,4 +38,6 @@ def test_ribosome():
         for codon in codons:
             mRNA = mRNAStrand(codon)
             r.bind_mRNA(mRNA)
-            tRNA = tRNAStrand()
+            anticodon = mRNA.get_seq_complement()
+            tRNA = tRNAStrand(anticodon)
+            r.bind_tRNA(tRNA)

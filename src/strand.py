@@ -20,6 +20,12 @@ class Strand:
     def __repr__(self):
         return f"{self.encoding.name}:{self.sequence}"
 
+    def get_seq_complement(self):
+        return self.encoding.get_seq_complement(self.sequence)
+
+    def is_complementary(self, sequence):
+        return self.get_seq_complement() == sequence
+
 
 class DNAStrand(Strand):
     encoding = DNA

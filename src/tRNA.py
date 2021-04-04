@@ -36,10 +36,10 @@ class tRNAStrand:
     amino_acid: AminoAcid = None
 
     def __init__(self, anticodon: str):
-        self.rna = RNAStrand(anticodon)
+        self.anticodon = RNAStrand(anticodon)
 
     def bind(self, amino_acid):
-        if amino_acid != ANTICODON_TO_AMINO_ACID[self.rna]:
+        if amino_acid != ANTICODON_TO_AMINO_ACID[self.anticodon]:
             return False
         self.amino_acid = amino_acid
         return True
