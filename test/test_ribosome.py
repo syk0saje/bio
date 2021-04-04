@@ -40,4 +40,5 @@ def test_ribosome():
             r.bind_mRNA(mRNA)
             anticodon = mRNA.get_seq_complement()
             tRNA = tRNAStrand(anticodon)
-            r.bind_tRNA(tRNA)
+            polypeptide = r.bind_tRNA(tRNA)
+            assert polypeptide == [amino_acid]
