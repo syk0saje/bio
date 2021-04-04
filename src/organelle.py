@@ -1,3 +1,4 @@
+from loguru import logger
 from src.strand import mRNAStrand
 from src.tRNA import tRNAStrand
 from src.amino_acid import AminoAcid
@@ -20,19 +21,28 @@ class Ribosome:
         self.mRNA = mRNA
         self.current_index = 0
         self.polypeptide = []
+        logger.success(f"Ribosome: Bound mRNA {mRNA}")
 
     def bind_tRNA(self, tRNA: tRNAStrand):
         """
         A Site compatibility check
         """
+        logger.info(f"Ribosome: checking compatibility of tRNA {tRNA} with current codon {self.current_codon}...")
         if tRNA.anticodon.is_complementary(self.current_codon):
+            logger.success("Compatible.")
             return self.synthesize(tRNA)
+        else:
+            logger.warning("Incompatible.!")
 
     def synthesize(self, tRNA: tRNAStrand):
         """
         P Site processing and E site ejection
         """
         amino_acid = tRNA.release_amino_acid()
+        if not amino_acid:
+            logger.error("No amino acid found in tRNA!")
+            return False
+
         self.polypeptide.append(amino_acid)
         self.eject_tRNA()
         return self.advance_mRNA()

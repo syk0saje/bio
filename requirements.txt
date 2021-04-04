@@ -8,6 +8,8 @@ attrs==20.3.0
     # via pytest
 iniconfig==1.1.1
     # via pytest
+loguru==0.5.3
+    # via -r requirements.in
 packaging==20.9
     # via pytest
 pluggy==0.13.1

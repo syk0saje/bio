@@ -22,6 +22,9 @@ class AminoacyltRNASynthetase:
 
     def charge(self, tRNA: tRNAStrand, amino_acid: AminoAcid, atp: ATP):
 
+        if type(amino_acid) != AminoAcid:
+            amino_acid = AminoAcid(amino_acid)
+
         if type(tRNA) != tRNAStrand:
             logger.error(f"Invalid tRNA provided: {tRNA}")
             return False

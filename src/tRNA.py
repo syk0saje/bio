@@ -39,7 +39,8 @@ class tRNAStrand:
         self.anticodon = RNAStrand(anticodon)
 
     def bind(self, amino_acid: AminoAcid):
-        if amino_acid != ANTICODON_TO_AMINO_ACID[self.anticodon]:
+        anticodon_str = "".join([str(x) for x in self.anticodon.sequence])
+        if amino_acid != ANTICODON_TO_AMINO_ACID[anticodon_str]:
             return False
         self.amino_acid = amino_acid
         return True
@@ -48,3 +49,6 @@ class tRNAStrand:
         amino_acid = self.amino_acid
         self.amino_acid = None
         return amino_acid
+
+    def __repr__(self):
+        return f"{self.anticodon} + {self.amino_acid}"

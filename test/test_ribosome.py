@@ -2,6 +2,8 @@ from loguru import logger
 from src.organelle import Ribosome
 from src.strand import mRNAStrand
 from src.tRNA import tRNAStrand
+from src.enzyme import AminoacyltRNASynthetase
+from src.molecules import ATP
 
 AMINO_ACID_CODONS = {
     'A': ['GCA', 'GCC', 'GCG', 'GCU'],
@@ -35,6 +37,8 @@ CODON_TO_AMINO_ACID = {
 
 def test_ribosome():
     r = Ribosome()
+    charger = AminoacyltRNASynthetase()
+    atp = ATP()
     for amino_acid, codons in AMINO_ACID_CODONS.items():
         for codon in codons:
             logger.info(f"Testing {codon} for {amino_acid}...")
@@ -42,5 +46,6 @@ def test_ribosome():
             r.bind_mRNA(mRNA)
             anticodon = mRNA.get_seq_complement()
             tRNA = tRNAStrand(anticodon)
+            charger.charge(tRNA, amino_acid, atp)
             polypeptide = r.bind_tRNA(tRNA)
             assert polypeptide == [amino_acid]
