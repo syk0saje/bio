@@ -1,3 +1,4 @@
+from loguru import logger
 from src.organelle import Ribosome
 from src.strand import mRNAStrand
 from src.tRNA import tRNAStrand
@@ -36,6 +37,7 @@ def test_ribosome():
     r = Ribosome()
     for amino_acid, codons in AMINO_ACID_CODONS.items():
         for codon in codons:
+            logger.info(f"Testing {codon} for {amino_acid}...")
             mRNA = mRNAStrand(codon)
             r.bind_mRNA(mRNA)
             anticodon = mRNA.get_seq_complement()
