@@ -1,4 +1,5 @@
-from src.strand import mRNAStrand, tRNA
+from src.strand import mRNAStrand
+from src.tRNA import tRNA
 
 STOP_CODONS = ["UAA", "UAG", "UGA"]
 

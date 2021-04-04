@@ -1,7 +1,8 @@
-from src.tRNA import tRNA
-from src.enzymes import Ribosome
+from src.organelle import Ribosome
+from src.strand import mRNAStrand
+from src.tRNA import tRNAStrand
 
-amino_acid_codons = {
+AMINO_ACID_CODONS = {
     'A': ['GCA', 'GCC', 'GCG', 'GCU'],
     'C': ['UGC', 'UGU'],
     'D': ['GAC', 'GAU'],
@@ -24,14 +25,17 @@ amino_acid_codons = {
     'Y': ['UAC', 'UAU'],
 }
 
-codon_to_amino_acid = {
+CODON_TO_AMINO_ACID = {
     codon: amino_acid
     for amino_acid, codons in AMINO_ACID_CODONS.items()
     for codon in codons
 }
 
+
 def test_ribosome():
     r = Ribosome()
-    for amino_acid, codons in amino_acid_codons:
+    for amino_acid, codons in AMINO_ACID_CODONS.items():
         for codon in codons:
-            anticodoon
+            mRNA = mRNAStrand(codon)
+            r.bind_mRNA(mRNA)
+            tRNA = tRNAStrand()
